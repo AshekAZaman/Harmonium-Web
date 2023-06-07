@@ -51,6 +51,32 @@ const keyNotes = {
 const whiteKeys = document.querySelectorAll('.white-key');
 const blackKeys = document.querySelectorAll('.black-key');
 
+
+// Add touchstart event listener to each key
+whiteKeys.forEach(key => {
+  key.addEventListener('touchstart', (event) => {
+    const start = new Date();
+    playNoteByKeyNumber(key, start);
+
+    // Add touchend event listener to stop the audio when the touch is released
+    key.addEventListener('touchend', () => {
+      stopNote();
+    });
+  });
+});
+
+blackKeys.forEach(key => {
+  key.addEventListener('touchstart', (event) => {
+    const start = new Date();
+    playNoteByKeyNumber(key, start);
+
+    // Add touchend event listener to stop the audio when the touch is released
+    key.addEventListener('touchend', () => {
+      stopNote();
+    });
+  });
+});
+
 // Add mousedown event listener to each key
 whiteKeys.forEach(key => {
   key.addEventListener('mousedown', () => {
